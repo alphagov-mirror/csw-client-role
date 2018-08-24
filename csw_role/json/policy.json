@@ -1,0 +1,76 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "support:DescribeTrustedAdvisorCheckResult",
+                "support:DescribeTrustedAdvisorChecks"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:ListRoles",
+                "iam:GetRolePolicy"
+            ],
+            "Resource": "arn:aws:iam::${account_id}:role/${prefix}_CstSecurityInspectorRole"
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetPolicy",
+                "iam:GetRolePolicy",
+                "iam:GetPolicyVersion"
+            ],
+            "Resource": [
+                "arn:aws:iam::${account_id}:policy/${prefix}_CstSecurityInspectorRolePolicy",
+                "arn:aws:iam::${account_id}:role/${prefix}_CstSecurityInspectorRole"
+            ]
+        },
+        {
+            "Sid": "VisualEditor3",
+            "Effect": "Allow",
+            "Action": [
+                "configservice:DescribeComplianceByConfigRule",
+                "configservice:DescribeComplianceByResource",
+                "configservice:DescribeConfigRuleEvaluationStatus",
+                "configservice:DescribeConfigRules"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor4",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListGroups",
+                "iam:ListRoles",
+                "iam:ListUsers",
+                "iam:ListAttachedGroupPolicies",
+                "iam:ListAttachedRolePolicies",
+                "iam:ListAttachedUserPolicies"
+            ],
+            "Resource": [
+                "arn:aws:iam::${account_id}:role/*",
+                "arn:aws:iam::${account_id}:group/*",
+                "arn:aws:iam::${account_id}:user/*",
+                "arn:aws:iam::${account_id}:policy/*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor4",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeSecurityGroups"
+            ],
+            "Resource": [
+                "arn:aws:ec2::${account_id}:security-group/*"
+            ]
+        }
+    ]
+}
