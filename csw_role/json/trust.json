@@ -5,7 +5,9 @@
       "Sid": "Statement0",
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:lambda:eu-west-2:103495720024:function:csw-dan_audit_account_metric"
+        "AWS": [
+          "arn:aws:iam::${account_id}:role/${prefix}_CstSecurityAgentRole"
+        ]
       },
       "Action": "sts:AssumeRole"
     }

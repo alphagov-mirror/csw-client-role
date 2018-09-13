@@ -63,14 +63,25 @@
             ]
         },
         {
-            "Sid": "VisualEditor4",
+            "Sid": "VisualEditor5",
             "Effect": "Allow",
             "Action": [
-                "ec2:DescribeSecurityGroups"
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeRegions"
             ],
-            "Resource": [
-                "arn:aws:ec2::${account_id}:security-group/*"
-            ]
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor6",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLogging",
+                "s3:GetBucketPolicy",
+                "s3:GetEncryptionConfiguration"
+            ],
+            "Resource": "arn:aws:s3:::*"
         }
     ]
 }

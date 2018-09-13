@@ -1,5 +1,7 @@
 module "csw_role" {
-  source     = "../csw_role"
-  prefix     = "csw-dan"
-  account_id = "779799343306"
+  source            = "../csw_role"
+  prefix            = "${var.prefix}"
+  region            = "${var.region}"
+  agent_account_id  = "${var.agent_account_id}"
+  target_account_id = "${var.target_account_id}"
 }
