@@ -66,22 +66,13 @@
             "Sid": "VisualEditor5",
             "Effect": "Allow",
             "Action": [
-                "ec2:DescribeSecurityGroups"
-            ],
-            "Resource": [
-                "arn:aws:ec2::${account_id}:security-group/*"
-            ]
-        },
-        {
-            "Sid": "VisualEditor6",
-            "Effect": "Allow",
-            "Action": [
+                "ec2:DescribeSecurityGroups",
                 "ec2:DescribeRegions"
             ],
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor7",
+            "Sid": "VisualEditor6",
             "Effect": "Allow",
             "Action": [
                 "s3:ListAllMyBuckets",
