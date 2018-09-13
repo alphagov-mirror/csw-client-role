@@ -1,5 +1,6 @@
 variable "prefix" {
   default = "prod"
 }
-
-variable "account_id" {}
+variable "region" {}
+variable "agent_account_id" {}
+variable "target_account_id" {}
