@@ -5,8 +5,7 @@
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "support:DescribeTrustedAdvisorCheckResult",
-                "support:DescribeTrustedAdvisorChecks"
+                "support:*"
             ],
             "Resource": "*"
         },
