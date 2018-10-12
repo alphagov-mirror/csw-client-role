@@ -81,6 +81,14 @@
                 "s3:GetEncryptionConfiguration"
             ],
             "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Sid": "VisualEditor7",
+            "Effect": "Allow",
+            "Action": [
+                "sts:GetCallerIdentity"
+            ],
+            "Resource": "arn:aws:s3:::*"
         }
     ]
 }
