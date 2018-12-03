@@ -3,7 +3,6 @@ data "template_file" "policy" {
 
   vars {
     prefix      = "${var.prefix}"
-    region      = "${var.region}"
     account_id  = "${var.target_account_id}"
   }
 }
