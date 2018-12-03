@@ -17,26 +17,49 @@ possible in line with the Principle of Least Privilege.
 
 ## Use 
 
+You can implement direct from GitHub or install this repository 
+and use the relative path to access the module: 
+
+### Naming 
+* _prefix_ - This is a namespace to name things relating to the 
+Cloud Security Watch service. In most cases this will be _csw-live_
+* _agent_account_ - The Cloud Security Watch service host AWS account
+* _target_account_ - The account granting permission to be audited by  
+
+### GitHub
+
+To implement directly from GitHub you just reference the 
+repository url as the source of the Terraform module
+
+```
+module "csw_role" {
+  source            = "git::https://github.com/alphagov/csw-client-role.git"
+  prefix            = "${var.csw_prefix}"
+  agent_account_id  = "${var.csw_agent_account_id}"
+  target_account_id = "${var.csw_target_account_id}"
+}
+```
+
+### Relative path
+
 Create a terraform file referencing the relative path where this 
 repository is installed. 
 
 ```
 module "csw_role" {
-  source            = "../csw_role"
-  prefix            = "${var.prefix}"
-  region            = "${var.region}"
-  agent_account_id  = "${var.agent_account_id}"
-  target_account_id = "${var.target_account_id}"
+  source            = "relative/path/to/csw_role"
+  prefix            = "${var.csw_prefix}"
+  agent_account_id  = "${var.csw_agent_account_id}"
+  target_account_id = "${var.csw_target_account_id}"
 }
 ```
 
-Populate the tfvars required by the module 
+Populate the tfvars required by the module. 
 
 ```
-prefix = "[environment]"
-region = "[eg eu-west-1]"
-agent_account_id = "[our account id]"
-target_account_id = "[your account id]"
+csw_prefix = "csw-live"
+csw_agent_account_id = "[our account id]"
+csw_target_account_id = "[your account id]"
 ```
 
 ## Policy Statements
@@ -108,3 +131,7 @@ This statement allows us to check the account ID we have
 assumed into. This is used to compare our bucket policy with 
 the policy deployed in the client account.  
 
+### Statement 9 - cloudtrail DescribeCloudTrails, GetCloudTrailStatus 
+
+Allows us to check how cloud trail logging has been set up in 
+the target account. 
