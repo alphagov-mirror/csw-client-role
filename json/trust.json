@@ -1,0 +1,15 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Statement0",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::${account_id}:role/${prefix}_CstSecurityAgentRole"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
