@@ -89,6 +89,15 @@
                 "sts:GetCallerIdentity"
             ],
             "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Sid": "VisualEditor8",
+            "Effect": "Allow",
+            "Action": [
+                "cloudtrail.DescribeTrails",
+                "cloudtrail.GetTrailStatus"
+            ],
+            "Resource": "arn:aws:cloudtrail:*:${account_id}:trail/*"
         }
     ]
 }
