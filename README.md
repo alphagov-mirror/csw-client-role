@@ -20,23 +20,30 @@ possible in line with the Principle of Least Privilege.
 Create a terraform file referencing the relative path where this 
 repository is installed. 
 
-```
+```git: csw_inspector_role.tf
 module "csw_role" {
-  source            = "../csw_role"
-  prefix            = "${var.prefix}"
-  region            = "${var.region}"
-  agent_account_id  = "${var.agent_account_id}"
-  target_account_id = "${var.target_account_id}"
+  source            = "git::https://github.com/alphagov/csw-client-role.git"
+  prefix            = "${var.csw_prefix}"
+  agent_account_id  = "${var.csw_agent_account_id}"
+  target_account_id = "${var.csw_target_account_id}"
+}
+```
+
+```local: csw_inspector_role.tf
+module "csw_role" {
+  source            = "relative/path/to/csw_role"
+  prefix            = "${var.csw_prefix}"
+  agent_account_id  = "${var.csw_agent_account_id}"
+  target_account_id = "${var.csw_target_account_id}"
 }
 ```
 
 Populate the tfvars required by the module 
 
-```
-prefix = "[environment]"
-region = "[eg eu-west-1]"
-agent_account_id = "[our account id]"
-target_account_id = "[your account id]"
+```apply.tfvars
+csw_prefix = "[environment]"
+csw_agent_account_id = "[our account id]"
+csw_target_account_id = "[your account id]"
 ```
 
 ## Policy Statements

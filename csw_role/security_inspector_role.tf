@@ -3,7 +3,6 @@ data "template_file" "trust" {
 
   vars {
     prefix      = "${var.prefix}"
-    region      = "${var.region}"
     account_id  = "${var.agent_account_id}"
   }
 }
