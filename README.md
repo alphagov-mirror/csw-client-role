@@ -146,3 +146,9 @@ This statement allows us to check the account ID we have
 assumed into. This is used to compare our bucket policy with 
 the policy deployed in the client account.  
 
+### Statement 9 - cloudtrail DescribeTrails, GetTrailStatus 
+
+This statement allows us to read the configuration of cloud 
+trail so we can check not only that cloud trail is working but 
+also that the cloud trails configured match the monitoring 
+requirements.  
