@@ -17,17 +17,22 @@ possible in line with the Principle of Least Privilege.
 
 ## Use 
 
-Create a terraform file referencing the relative path where this 
-repository is installed. 
+You can include the terraform module into your code in one of 
+two ways: 
+
+### Reference direct from GitHub 
 
 ```git: csw_inspector_role.tf
-module "csw_role" {
+module "csw_inspector_role" {
   source            = "git::https://github.com/alphagov/csw-client-role.git"
-  prefix            = "${var.csw_prefix}"
-  agent_account_id  = "${var.csw_agent_account_id}"
-  target_account_id = "${var.csw_target_account_id}"
+  region = "eu-west-1"
+  csw_prefix            = "${var.csw_prefix}"
+  csw_agent_account_id  = "${var.csw_agent_account_id}"
+  csw_target_account_id = "${var.csw_target_account_id}"
 }
 ```
+
+### Install as a local dependency and reference the relative path
 
 ```local: csw_inspector_role.tf
 module "csw_role" {
@@ -38,9 +43,35 @@ module "csw_role" {
 }
 ```
 
-Populate the tfvars required by the module 
+### Define the variables 
+In both cases you need to define the variables passed to 
+the terraform module.
 
-```apply.tfvars
+```csw-variables.tf
+variable "csw_prefix" {
+    default = "csw-prod"
+}
+variable "region" {
+    default = "eu-west-1"
+}
+variable "csw_agent_account_id" {}
+variable "csw_target_account_id" {}
+```
+
+### Create a tfvar file 
+Populate the tfvars required by the module
+
+The agent account is the account running the Cloud Security 
+Watch service. 
+
+The target account is the account which is to be audited. 
+
+Unless you are setting up a test environment the `csw_prefix`
+variable should be set to `csw-prod` for the production 
+environment.  
+
+```csw-apply.tfvars
+region = "eu-west-1"
 csw_prefix = "[environment]"
 csw_agent_account_id = "[our account id]"
 csw_target_account_id = "[your account id]"
