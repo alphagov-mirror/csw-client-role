@@ -17,7 +17,7 @@ possible in line with the Principle of Least Privilege.
 
 ## How it works
 
-![infrastructure diagram](./assets/CloudSecurityWatch-infrastructure.png) 
+![operating model diagram](./assets/CloudSecurityWatch-operating-model.png) 
 
 When Cloud Security Watch executes it invokes a series of lambda 
 functions.
