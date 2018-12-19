@@ -17,6 +17,8 @@ possible in line with the Principle of Least Privilege.
 
 ## How it works
 
+![infrastructure diagram](./assets/CloudSecurityWatch-infrastructure.png) 
+
 When Cloud Security Watch executes it invokes a series of lambda 
 functions.
 
@@ -38,8 +40,6 @@ date.
 As the number of checks carried out by the tool increases we may 
 need to add additional permissions and so if this role is not 
 maintained the audit may not run completely. 
-
-![infrastructure diagram](./assets/CloudSecurityWatch-infrastructure.png) 
 
 ## Use 
 
