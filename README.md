@@ -17,7 +17,7 @@ possible in line with the Principle of Least Privilege.
 
 ## How it works
 
-![operating model diagram](./assets/CloudSecurityWatch-operating-model.png) 
+![Cloud Security Watch runs Lambda function using an Agent execution role defined in IAM in the AWS account that runs the tool. The “Agent” role is allowed to assume an Inspector role defined in IAM in the client AWS account. This means the Inspector” role must be configured in each account you want to monitor.](./assets/CloudSecurityWatch-operating-model.png) 
 
 When Cloud Security Watch executes it invokes a series of lambda 
 functions.
