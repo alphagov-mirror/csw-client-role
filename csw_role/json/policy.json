@@ -98,6 +98,17 @@
                 "cloudtrail:GetTrailStatus"
             ],
             "Resource": "arn:aws:cloudtrail::${account_id}:*"
+        },
+        {
+            "Sid": "VisualEditor9",
+            "Effect": "Allow",
+            "Action": [
+                "kms:ListKeys",
+                "kms:GetKeyRotationStatus",
+                "kms:DescribeKey"
+            ],
+            "Resource": "arn:aws:kms:*:103495720024:*"
         }
+
     ]
 }
