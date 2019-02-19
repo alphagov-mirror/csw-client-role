@@ -13,7 +13,33 @@ IAM roles and policies. The full list of granted permissions
 along with the rationale is listed below. 
 
 We have tried to keep the number of allowed actions as small as 
-possible in line with the Principle of Least Privilege. 
+possible in line with the Principle of Least Privilege.
+
+## How it works
+
+![Cloud Security Watch runs Lambda function using an Agent execution role defined in IAM in the AWS account that runs the tool. The “Agent” role is allowed to assume an Inspector role defined in IAM in the client AWS account. This means the Inspector” role must be configured in each account you want to monitor.](./assets/CloudSecurityWatch-operating-model.png) 
+
+When Cloud Security Watch executes it invokes a series of lambda 
+functions.
+
+The lambda functions share an IAM execution role.
+
+The client IAM role defined in your account is trusted by the 
+lambda execution role in our account allowing us to assume the 
+client role to query your account. 
+
+The trust relationship trusts only our lambda execution role 
+meaning only lambdas running with that role have access to your 
+data. 
+
+The first thing we check on running an audit is that the definition 
+of that role matches the master definition in this repository. This 
+ensures that the role hasn't been tampered with or become out of 
+date. 
+
+As the number of checks carried out by the tool increases we may 
+need to add additional permissions and so if this role is not 
+maintained the audit may not run completely. 
 
 ## Use 
 
