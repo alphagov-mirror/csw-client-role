@@ -108,7 +108,7 @@
                 "kms:GetKeyRotationStatus",
                 "kms:DescribeKey"
             ],
-            "Resource": "arn:aws:kms:*:103495720024:*"
+            "Resource": "arn:aws:kms:*:${account_id}:*"
         }
 
     ]
