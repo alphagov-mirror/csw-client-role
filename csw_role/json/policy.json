@@ -104,12 +104,18 @@
             "Sid": "VisualEditor9",
             "Effect": "Allow",
             "Action": [
-                "kms:ListKeys",
+                "kms:ListKeys"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor9",
+            "Effect": "Allow",
+            "Action": [
                 "kms:GetKeyRotationStatus",
                 "kms:DescribeKey"
             ],
             "Resource": "arn:aws:kms:*:${account_id}:*"
         }
-
     ]
 }
