@@ -20,7 +20,7 @@
             "Resource": "arn:aws:iam::${account_id}:role/${prefix}_CstSecurityInspectorRole"
         },
         {
-            "Sid": "VisualEditor2.1",
+            "Sid": "VisualEditor2pt1",
             "Effect": "Allow",
             "Action": [
                 "iam:GetPolicy",
@@ -100,7 +100,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor8.1",
+            "Sid": "VisualEditor8pt1",
             "Effect": "Allow",
             "Action": [
                 "cloudtrail:GetTrailStatus"
@@ -116,7 +116,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor9.1",
+            "Sid": "VisualEditor9pt1",
             "Effect": "Allow",
             "Action": [
                 "kms:GetKeyRotationStatus",
