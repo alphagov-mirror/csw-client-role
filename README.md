@@ -135,7 +135,7 @@ One of the checks we have prioritised is checking whether IAM
 has been configured with a role granting access to users in the 
 shared user account. 
 
-### Statement 5 - ec2 DescribeRegions, DescibeSecurityGroups
+### Statement 5 - ec2 DescribeRegions, DescibeSecurityGroups, DescribeVpcs, DescribeFlowLogs
 
 #### ec2 DescribeRegions
 
@@ -153,6 +153,22 @@ directly. Trusted Advisor has some ingress / egress rules but
 these don't perform quite the right checks for our environment 
 so we have customised the rules and therefore need access to the 
 raw data.
+
+#### ec2 DescribeVpcs
+
+This statement allows us to describe all the VPCs in the target
+account, so that we can check if they have flow logs enabled.
+
+This returns data such as the CIDR block that is assigned to the
+VPC and whether the VPC is the default VPC of the account. The
+only data that we make use of is the VPC ID, and the Tags field
+to retrieve the name of the VPC, if it has been set.
+
+#### ec2 DescribeFlowLogs
+
+This statement allows us to retrieve data about all the flow logs
+assigned to a VPC. If a VPC has no flow logs set up for it, the
+action returns no data.
 
 ### Statement 6 - s3 ListAllBuckets, all configuration Gets
 #### GetBucketAcl, GetBucketLogging, GetBucketPolicy, GetEncryptionConfiguration, GetBucketVersioning
