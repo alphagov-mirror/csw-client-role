@@ -2,7 +2,7 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": [
                 "support:*"
@@ -10,7 +10,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor1",
+            "Sid": "VisualEditor2",
             "Effect": "Allow",
             "Action": [
                 "iam:GetRole",
@@ -20,7 +20,7 @@
             "Resource": "arn:aws:iam::${account_id}:role/${prefix}_CstSecurityInspectorRole"
         },
         {
-            "Sid": "VisualEditor2",
+            "Sid": "VisualEditor2.1",
             "Effect": "Allow",
             "Action": [
                 "iam:GetPolicy",
