@@ -95,7 +95,14 @@
             "Sid": "VisualEditor8",
             "Effect": "Allow",
             "Action": [
-                "cloudtrail:DescribeTrails",
+                "cloudtrail:DescribeTrails"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor8.1",
+            "Effect": "Allow",
+            "Action": [
                 "cloudtrail:GetTrailStatus"
             ],
             "Resource": "arn:aws:cloudtrail::${account_id}:*"
@@ -104,12 +111,18 @@
             "Sid": "VisualEditor9",
             "Effect": "Allow",
             "Action": [
-                "kms:ListKeys",
+                "kms:ListKeys"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor9.1",
+            "Effect": "Allow",
+            "Action": [
                 "kms:GetKeyRotationStatus",
                 "kms:DescribeKey"
             ],
             "Resource": "arn:aws:kms:*:${account_id}:*"
         }
-
     ]
 }
