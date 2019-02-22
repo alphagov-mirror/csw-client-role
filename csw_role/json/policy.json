@@ -2,7 +2,7 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": [
                 "support:*"
@@ -10,7 +10,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor1",
+            "Sid": "VisualEditor2",
             "Effect": "Allow",
             "Action": [
                 "iam:GetRole",
@@ -20,7 +20,7 @@
             "Resource": "arn:aws:iam::${account_id}:role/${prefix}_CstSecurityInspectorRole"
         },
         {
-            "Sid": "VisualEditor2",
+            "Sid": "VisualEditor2pt1",
             "Effect": "Allow",
             "Action": [
                 "iam:GetPolicy",
@@ -100,7 +100,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor8.1",
+            "Sid": "VisualEditor8pt1",
             "Effect": "Allow",
             "Action": [
                 "cloudtrail:GetTrailStatus"
@@ -116,7 +116,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor9.1",
+            "Sid": "VisualEditor9pt1",
             "Effect": "Allow",
             "Action": [
                 "kms:GetKeyRotationStatus",

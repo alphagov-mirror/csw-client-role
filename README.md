@@ -50,8 +50,8 @@ two ways:
 
 ```git: csw_inspector_role.tf
 module "csw_inspector_role" {
-  source            = "git::https://github.com/alphagov/csw-client-role.git"
-  region = "eu-west-1"
+  source                = "git::https://github.com/alphagov/csw-client-role.git"
+  region                = "eu-west-1"
   csw_prefix            = "${var.csw_prefix}"
   csw_agent_account_id  = "${var.csw_agent_account_id}"
   csw_target_account_id = "${var.csw_target_account_id}"
@@ -77,9 +77,6 @@ the terraform module.
 variable "csw_prefix" {
     default = "csw-prod"
 }
-variable "region" {
-    default = "eu-west-1"
-}
 variable "csw_agent_account_id" {}
 variable "csw_target_account_id" {}
 ```
@@ -97,7 +94,6 @@ variable should be set to `csw-prod` for the production
 environment.  
 
 ```csw-apply.tfvars
-region = "eu-west-1"
 csw_prefix = "[environment]"
 csw_agent_account_id = "[our account id]"
 csw_target_account_id = "[your account id]"
@@ -115,7 +111,7 @@ currently a requirement of calling
 This does grant us permission to submit support cases which we 
 do not need but sadly can't avoid. 
 
-### Statements 2 and 3 - iam GetRole, ListRoles, GetRolePolicy 
+### Statements 2 & 2.1 - iam GetRole, ListRoles, GetRolePolicy 
 
 This statement is limited to the inspector role resource 
 `[env]_CstSecurityInspectorRole`. This statement allows us to 
@@ -125,21 +121,23 @@ We need this to ensure that the deployed role grants all the
 permissions required by the current version of the 
 Cloud Security Watch. 
 
-### Statement 4 - configservice - Describe* 
+### Statement 3 - configservice - Describe* 
 
 This statement allows us to describe config rules and their 
 results. At present we are not implementing the config service. 
 The plan is to move to a model of deploying custom checks as 
 config rules. 
 
-### Statement 5 - iam List* 
+### Statement 4 - iam List* 
 
 This statement is not limited to our inspector role. 
 One of the checks we have prioritised is checking whether IAM 
 has been configured with a role granting access to users in the 
 shared user account. 
 
-### Statement 6 - ec2 DescribeRegions
+### Statement 5 - ec2 DescribeRegions, DescibeSecurityGroups
+
+#### ec2 DescribeRegions
 
 This statement allows us to get the list of AWS regions so that
 can submit regional resource checks against each region in turn. 
@@ -148,7 +146,7 @@ Strictly speaking this check is not required in the client
 account but it's easier to do it with the same API client which 
 has assumed permission. 
 
-### Statement 6 - ec2 DescribeSecurityGroups
+#### ec2 DescribeSecurityGroups
 
 This statement allows us to check the ingress / egress rules 
 directly. Trusted Advisor has some ingress / egress rules but 
@@ -156,7 +154,8 @@ these don't perform quite the right checks for our environment
 so we have customised the rules and therefore need access to the 
 raw data.
 
-### Statement 7 - s3 ListAllBuckets, Get*
+### Statement 6 - s3 ListAllBuckets, all configuration Gets
+#### GetBucketAcl, GetBucketLogging, GetBucketPolicy, GetEncryptionConfiguration, GetBucketVersioning
 
 This statement allows us to get the configuration settings of 
 S3 buckets without granting us any visibility over the bucket 
@@ -166,15 +165,21 @@ We may need to extend this to check read/write permission of
 the objects in the buckets but we would prefer not having any 
 visibility of the bucket contents if possible. 
 
-### Statement 8 - sts GetCallerIdentity 
+### Statement 7 - sts GetCallerIdentity 
 
 This statement allows us to check the account ID we have 
 assumed into. This is used to compare our bucket policy with 
 the policy deployed in the client account.  
 
-### Statement 9 - cloudtrail DescribeTrails, GetTrailStatus 
+### Statements 8 & 8.1 - cloudtrail DescribeTrails, GetTrailStatus 
 
 This statement allows us to read the configuration of cloud 
 trail so we can check not only that cloud trail is working but 
 also that the cloud trails configured match the monitoring 
 requirements.  
+
+### Statements 9 & 9.1 - kms ListKeys, GetKeyRotationStatus, DescribeKey
+
+This statement allows us to check whether KMS is managed by AWS 
+or using a Customer Managed Key (CMK). In the case of CMK use 
+the check ensures that the customer keys are regularly rotated.
