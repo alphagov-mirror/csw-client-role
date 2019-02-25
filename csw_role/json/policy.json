@@ -100,7 +100,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor8.1",
+            "Sid": "VisualEditor8p1",
             "Effect": "Allow",
             "Action": [
                 "cloudtrail:GetTrailStatus"
@@ -116,7 +116,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor9.1",
+            "Sid": "VisualEditor9p1",
             "Effect": "Allow",
             "Action": [
                 "kms:GetKeyRotationStatus",
