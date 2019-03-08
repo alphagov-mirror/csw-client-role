@@ -183,3 +183,7 @@ requirements.
 This statement allows us to check whether KMS is managed by AWS 
 or using a Customer Managed Key (CMK). In the case of CMK use 
 the check ensures that the customer keys are regularly rotated.
+
+### Statements 10 - rds DescribeDBInstances
+
+This statement allows us to check whether DB instances managed by RDS are encrypted.
