@@ -123,6 +123,14 @@
                 "kms:DescribeKey"
             ],
             "Resource": "arn:aws:kms:*:${account_id}:*"
+        },
+        {
+            "Sid": "VisualEditor10",
+            "Effect": "Allow",
+            "Action": [
+                "rds:DescribeDBInstances"
+            ],
+            "Resource": "*"
         }
     ]
 }
