@@ -135,7 +135,7 @@ One of the checks we have prioritised is checking whether IAM
 has been configured with a role granting access to users in the 
 shared user account. 
 
-### Statement 5 - ec2 DescribeRegions, DescibeSecurityGroups
+### Statement 5 - ec2 DescribeRegions, DescibeSecurityGroups, DescribeVolumes
 
 #### ec2 DescribeRegions
 
