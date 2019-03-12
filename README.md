@@ -187,3 +187,7 @@ the check ensures that the customer keys are regularly rotated.
 ### Statements 10 - rds DescribeDBInstances
 
 This statement allows us to check whether DB instances managed by RDS are encrypted.
+
+### Statements 11 - elasticloadbalancing DescribeLoadBalancers, DescribeLoadBalancerAttributes
+
+This statement allows us to list all load balancers used and inspect their attributes.

@@ -132,6 +132,15 @@
                 "rds:DescribeDBInstances"
             ],
             "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor11",
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes"
+            ],
+            "Resource": "*"
         }
     ]
 }
