@@ -66,7 +66,8 @@
             "Effect": "Allow",
             "Action": [
                 "ec2:DescribeSecurityGroups",
-                "ec2:DescribeRegions"
+                "ec2:DescribeRegions",
+                "ec2:DescribeVolumes"
             ],
             "Resource": "*"
         },
@@ -129,6 +130,15 @@
             "Effect": "Allow",
             "Action": [
                 "rds:DescribeDBInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor11",
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes"
             ],
             "Resource": "*"
         }

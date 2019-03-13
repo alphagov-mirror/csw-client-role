@@ -135,7 +135,7 @@ One of the checks we have prioritised is checking whether IAM
 has been configured with a role granting access to users in the 
 shared user account. 
 
-### Statement 5 - ec2 DescribeRegions, DescibeSecurityGroups
+### Statement 5 - ec2 DescribeRegions, DescibeSecurityGroups, DescribeVolumes
 
 #### ec2 DescribeRegions
 
@@ -187,3 +187,7 @@ the check ensures that the customer keys are regularly rotated.
 ### Statements 10 - rds DescribeDBInstances
 
 This statement allows us to check whether DB instances managed by RDS are encrypted.
+
+### Statements 11 - elasticloadbalancing DescribeLoadBalancers, DescribeLoadBalancerAttributes
+
+This statement allows us to list all load balancers used and inspect their attributes.
