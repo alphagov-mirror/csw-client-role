@@ -1,9 +1,11 @@
+data "aws_caller_identity" "current" {}
+
 data "template_file" "policy" {
   template = "${file("${path.module}/json/policy.json")}"
 
   vars {
-    prefix      = "${var.prefix}"
-    account_id  = "${var.target_account_id}"
+    prefix     = "${var.prefix}"
+    account_id = "${data.aws_caller_identity.current.account_id}"
   }
 }
 

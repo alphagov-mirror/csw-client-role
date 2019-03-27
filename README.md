@@ -54,7 +54,6 @@ module "csw_inspector_role" {
   region                = "eu-west-1"
   csw_prefix            = "${var.csw_prefix}"
   csw_agent_account_id  = "${var.csw_agent_account_id}"
-  csw_target_account_id = "${var.csw_target_account_id}"
 }
 ```
 
@@ -65,7 +64,6 @@ module "csw_role" {
   source            = "relative/path/to/csw_role"
   prefix            = "${var.csw_prefix}"
   agent_account_id  = "${var.csw_agent_account_id}"
-  target_account_id = "${var.csw_target_account_id}"
 }
 ```
 
@@ -78,7 +76,6 @@ variable "csw_prefix" {
     default = "csw-prod"
 }
 variable "csw_agent_account_id" {}
-variable "csw_target_account_id" {}
 ```
 
 ### Create a tfvar file 
@@ -96,7 +93,6 @@ environment.
 ```csw-apply.tfvars
 csw_prefix = "[environment]"
 csw_agent_account_id = "[our account id]"
-csw_target_account_id = "[your account id]"
 ```
 
 ## Policy Statements
