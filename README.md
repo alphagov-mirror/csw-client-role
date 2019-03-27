@@ -155,7 +155,7 @@ so we have customised the rules and therefore need access to the
 raw data.
 
 ### Statement 6 - s3 ListAllBuckets, all configuration Gets
-#### GetBucketAcl, GetBucketLogging, GetBucketPolicy, GetEncryptionConfiguration, GetBucketVersioning
+#### GetBucketAcl, GetBucketLogging, GetBucketPolicy, GetEncryptionConfiguration, GetBucketVersioning, GetEncryptionConfiguration
 
 This statement allows us to get the configuration settings of 
 S3 buckets without granting us any visibility over the bucket 
