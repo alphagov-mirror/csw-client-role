@@ -1,0 +1,21 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: An example service catalog
+
+Resources:
+  CSWRole:
+    Type: AWS::ServiceCatalog::CloudFormationProvisionedProduct
+    Properties:
+      AcceptLanguage: String
+      NotificationArns:
+        - String
+      PathId: String
+      ProductId: String
+      ProductName: String
+      ProvisionedProductName: String
+      ProvisioningArtifactId: String
+      ProvisioningArtifactName: String
+      ProvisioningParameters:
+        - ProvisioningParameter
+      Tags:
+        - Tag

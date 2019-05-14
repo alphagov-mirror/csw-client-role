@@ -1,0 +1,19 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
+Resources:
+  CSWRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: "csw-prod_CstSecurityInspectorRolez"
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action:
+              - sts:AssumeRole
+            Principal:
+              AWS:
+                - arn:aws:iam::779799343306:role/csw-prod_CstSecurityAgentRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/SecurityAudit
