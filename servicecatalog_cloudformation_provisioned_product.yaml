@@ -3,19 +3,53 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: An example service catalog
 
 Resources:
-  CSWRole:
-    Type: AWS::ServiceCatalog::CloudFormationProvisionedProduct
+
+  CyberCatalog:
+    Type: AWS::ServiceCatalog::Portfolio
     Properties:
-      AcceptLanguage: String
-      NotificationArns:
-        - String
-      PathId: String
-      ProductId: String
-      ProductName: String
-      ProvisionedProductName: String
-      ProvisioningArtifactId: String
-      ProvisioningArtifactName: String
-      ProvisioningParameters:
-        - ProvisioningParameter
-      Tags:
-        - Tag
+      AcceptLanguage: en
+      Description: Cyber
+      DisplayName: Cyber
+      ProviderName: Cyber
+
+
+  CSWRoleProduct:
+    Type: AWS::ServiceCatalog::CloudFormationProduct
+    Properties:
+      Name: "csw_client_role"
+      Owner: Cyber
+      ProvisioningArtifactParameters:
+        - Description: V1
+          Info: {"LoadTemplateFromURL": "https://s3.amazonaws.com/service-catalog-test-uoru/client-role.yaml"}
+          Name: client-role
+
+
+  CyberCatalogCSWRole:
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+    Properties:
+      PortfolioId: !Ref CyberCatalog
+      ProductId: !Ref CSWRoleProduct
+
+  CyberCatalogShareStaging:
+    Type: AWS::ServiceCatalog::PortfolioShare
+    Properties:
+      AccountId: 103495720024
+      PortfolioId: !Ref CyberCatalog
+
+
+  # CSWRole:
+  #   Type: AWS::ServiceCatalog::CloudFormationProvisionedProduct
+  #   Properties:
+  #     AcceptLanguage: String
+  #     NotificationArns:
+  #       - String
+  #     PathId: String
+  #     ProductId: String
+  #     ProductName: String
+  #     ProvisionedProductName: String
+  #     ProvisioningArtifactId: String
+  #     ProvisioningArtifactName: String
+  #     ProvisioningParameters:
+  #       - ProvisioningParameter
+  #     Tags:
+  #       - Tag
